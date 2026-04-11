@@ -1,5 +1,6 @@
 h1{
   text-align="center";
+}
 body{
   margin: 0px;
   text-align="center";
@@ -8,7 +9,7 @@ main{
   margin: 20px;}
 
 .navbar ul{
- background-color: #808080;
+ background-color: #gray;
   padding: 0px;
   Margin: 0px;
   overflow: hidden;
