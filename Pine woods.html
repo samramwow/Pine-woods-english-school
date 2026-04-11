@@ -105,12 +105,23 @@
 <body>
 
     <nav class="navbar">
-        <ul>
-            <li><strong>School Portal</strong></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Download App</a></li>
-        </ul>
-    </nav>
+    <ul>
+        <li><strong>School Portal</strong></li>
+        <li><a href="javascript:void(0)" onclick="toggleSidebar()">About Us</a></li>
+        <li><a href="#">Download App</a></li>
+    </ul>
+</nav>
+
+<!-- The Vertical Bar (Sidebar) -->
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+    <h3 style="color: white; padding-left: 25px;">Menu</h3>
+    <a href="#">School History</a>
+    <a href="#">Our Vision</a>
+    <a href="#">Faculty Members</a>
+    <a href="#">Contact Details</a>
+</div>
+
 
     <main class="container">
         <section>
@@ -164,6 +175,16 @@
         </footer>
    
     </main>
+<script>
+function toggleSidebar() {
+    var sidebar = document.getElementById("mySidebar");
+    if (sidebar.style.width === "250px") {
+        sidebar.style.width = "0";
+    } else {
+        sidebar.style.width = "250px";
+    }
+}
+</script>
 
 </body>
 </html>
