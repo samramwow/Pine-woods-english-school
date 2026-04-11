@@ -2,128 +2,169 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA_Compatible" content="IE=edge"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Portal Features</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Portal | Home</title>
     <link rel="stylesheet" href="style.css">
-<body>
-
-       <nav class="navbar">
-  <ul>
-   <div class="li"> <li><a href="">Logo</a></li></div>
-    <li><a href="">Download</a></li>
-  </ul>
-</nav>
-<div class ="h1"><main> Home pageh</main></div>
-  <style>    body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+    <style>
+    
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
-            padding: 20px;
+            margin: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
-        .container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 600px;
+
+    
+        .navbar {
             width: 100%;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        .navbar ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar a:hover { color: #3498db; }
+
+    
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            margin: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 800px;
+            width: 90%;
+        }
+
         h2 {
-            font-size: 1.2em;
             color: #2c3e50;
-            margin-bottom: 5px;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+
+    
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .sliding-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: slideIn 1.5s ease-out; 
+        }
+
+    
+        .footer-note {
+            background-color: #e8f4f8;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+
+        .credits {
             margin-top: 20px;
-            border-bottom: 2px solid #3498db;
-            display: inline-block;
-            padding-bottom: 3px;
-        }
-        ul {
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-        li {
-            margin-bottom: 5px;
+            padding: 15px;
+            background-color: #fdf2b2;
+            border-radius: 8px;
+            font-size: 0.9em;
             text-align: center;
         }
-        .footer-note {
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #e8f4f8;
-            border-left: 4px solid #3498db;
-            font-weight: bold;
-        }
-              
-        .credits {
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #ffda03;
-            border-left: 4px solid #daa520;
-            font-weight: bold;
-        }</style>
+        .credits a { color: #d4af37; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Functions of the students login:-</h2>
+    <nav class="navbar">
         <ul>
-            <li>Students Marks check online </li>
-            <li>Students attendance check online </li>
-            <li>Events check online </li>
+            <li><strong>School Portal</strong></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Download App</a></li>
         </ul>
+    </nav>
 
+    <main class="container">
+        <section>
+            <h2>Student Login Features</h2>
+            <ul>
+                <li>Check marks online instantly</li>
+                <li>Track daily attendance</li>
+                <li>Stay updated with school events</li>
+            </ul>
+        </section>
 
-          <div class="h2">
-            <h2>Reasons to get an admission here</h2>
-              <ul>
-                <li>We treat every child fairly</li>
-                  <li>We value your trust</li>
-                  <li>our teachers try to provide the best possible education </li>
-              </ul>
-    
-<head>
-<style>
-  /* 1. Define the animation */
-  @keyframes slideIn {
-    from {
-      transform: translateX(-100px); /* Start 100px to the left */
-      opacity: 0;                   /* Start invisible */
-    }
-    to {
-      transform: translateX(0);      /* End at original position */
-      opacity: 1.0;                   /* End fully visible */
-    }
-  }
+        <section class="image-section">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqMEEHE3xE3RIy5mX24fU8D30INEXzCL9VlXp9mh9p8D7XOs4NjnnPBa3JLgEAVDHMPiC4VPH1ex6xo3qk5IfUPrAz5K9cJmKqNFR0KF5dlnUzlyMEI0UJPzL7fcZ5s8Q=s1484-w784-h1484-rw" 
+                 alt="School Campus" 
+                 class="sliding-image">
+        </section>
 
-  /* 2. Apply it to the image */
-  .sliding-image {
-    width: 300px;                   /* Set your preferred size */
-    height: auto;
-    animation: slideIn 5.2s ease-in; /* Duration: 1.2s, Effect: smooth stop */
-  }
-</style>
-</head>
-
-
-  
-  <img 
-    src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqMEEHE3xE3RIy5mX24fU8D30INEXzCL9VlXp9mh9p8D7XOs4NjnnPBa3JLgEAVDHMPiC4VPH1ex6xo3qk5IfUPrAz5K9cJmKqNFR0KF5dlnUzlyMEI0UJPzL7fcZ5s8Q=s1484-w784-h1484-rw" 
-    alt="Sliding Furniture" 
-    class="sliding-image">
-
-</body>
-        
+        <section>
+            <h2>Why Choose Our School?</h2>
+            <ul>
+                <li>Fair treatment for every child</li>
+                <li>Built on a foundation of trust</li>
+                <li>Dedicated teachers providing world-class education</li>
+            </ul>
+        </section>
 
         <div class="footer-note">
-            <p>All the students can check there Marks and attendance online using the school app.</p>
+            <p><strong>Note:</strong> All students can access their academic records through our dedicated mobile app.</p>
         </div>
-    
- <div class="credits"><p>App - Aditya Kumar <a href="https://www.instagram.com/idk._.aditya01?igsh=MW1jd2lrbzh5NTkwNg=="> Aditya's Instagram page</a>
-                                                     <br> Web - Sathvik Desai <a href="https://www.instagram.com/_sathvik_195?igsh=dDczcnZneGNnY2Nz"> Sathvik's Instagram page</a></p>
-    
- </div>
+
+        <footer class="credits">
+            <p>App Developed by: <strong>Aditya Kumar</strong> | <a href="https://www.instagram.com/idk._.aditya01">Instagram</a></p>
+            <p>Web Developed by: <strong>Sathvik Desai</strong></p>
+        </footer>
+   
+<footer class="contact-box">
+    <h3>Contact Us</h3>
+    <div class="contact-grid">
+        <div class="contact-item">
+            <span class="icon">📞</span>
+            <p><strong>Phone:</strong> +91 12345 67890</p>
+        </div>
+        <div class="contact-item">
+            <span class="icon">📸</span>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com">@your_school_id</a></p>
+        </div>
+        <div class="contact-item">
+            <span class="icon">📍</span>
+            <p><strong>Location:</strong> 123 Education Lane, City Name</p>
+        </div>
+    </div>
+</footer>
+
+    </main>
+
 </body>
 </html>
