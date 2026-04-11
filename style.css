@@ -1,9 +1,9 @@
-h1{
-  text-align="center";
+<style>h1{
+  text-align: center;
 }
 body{
   margin: 0px;
-  text-align="center";
+  text-align= center;
 }
 main{
   margin: 20px;}
@@ -27,3 +27,4 @@ main{
   .navbar li{
     float: left;
   }
+</style>
