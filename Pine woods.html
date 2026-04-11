@@ -112,6 +112,19 @@
     </ul>
 </nav>
 
+
+<div id="admissionPopup" class="popup-overlay">
+    <div class="popup-content">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <h2>🎓 Admissions Open!</h2>
+      <p>Enrollment for the 2026-27 academic session is now active.</p>
+        <p>Secure your child's future with us today.</p>
+        <div class="credits"><p>*Details regarding admission are available in the Pine Woods app</p></div> 
+        </div>
+</div>
+
+
+    
 <!-- The Vertical Bar (Sidebar) -->
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
@@ -185,6 +198,10 @@ function toggleSidebar() {
     }
 }
 </script>
-
+    
+    <script>function closePopup() {
+    document.getElementById("admissionPopup").style.display = "none";
+}
+</script>
 </body>
 </html>
