@@ -241,3 +241,71 @@ h1 {
     font-style: normal;
     font-size: 0.85rem;
 }
+
+.faculty-section {
+    margin-top: 50px;
+    background-color: #f8fafc;
+    padding: 40px 20px;
+    border-radius: 15px;
+}
+
+.faculty-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.faculty-card {
+    background: #ffffff;
+    max-width: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid #2c3e50; /* Matches your navbar blue */
+}
+
+.faculty-quote {
+    padding: 25px;
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.7;
+    position: relative;
+}
+
+/* Adds a subtle quote mark icon */
+.faculty-quote::before {
+    content: "“";
+    font-size: 4rem;
+    color: #edf2f7;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    z-index: 0;
+}
+
+.faculty-quote p {
+    position: relative;
+    z-index: 1;
+}
+
+.faculty-info {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 25px;
+    text-align: left;
+}
+
+.faculty-info strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.faculty-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
