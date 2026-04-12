@@ -6,7 +6,6 @@
     <title>School Portal | Home</title>
     <link rel="stylesheet" href="style.css">
     <style>
-    
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f2f5;
@@ -18,7 +17,6 @@
             align-items: center;
         }
 
-    
         .navbar {
             width: 100%;
             background: #2c3e50;
@@ -42,7 +40,6 @@
         }
         .navbar a:hover { color: #3498db; }
 
-    
         .container {
             background: #ffffff;
             padding: 40px;
@@ -63,7 +60,6 @@
         ul { padding-left: 20px; }
         li { margin-bottom: 10px; }
 
-    
         @keyframes slideIn {
             from { transform: translateX(-50px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
@@ -82,7 +78,6 @@
             animation: slideIn 1.5s ease-out; 
         }
 
-    
         .footer-note {
             background-color: #e8f4f8;
             border-radius: 8px;
@@ -100,6 +95,15 @@
             text-align: center;
         }
         .credits a { color: #d4af37; font-weight: bold; }
+        
+        /* Added a simple class to handle section hiding smoothly */
+        .content-section {
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+        #home-section {
+            display: block; /* Home is visible by default */
+        }
     </style>
 </head>
 <body>
@@ -112,10 +116,9 @@
     </ul>
 </nav>
 
-
 <div id="admissionPopup" class="popup-overlay">
     <div class="popup-content">
-        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <span class="close-popup" onclick="closePopup()">×</span>
         <h2>🎓 Admissions Open!</h2>
       <p>Enrollment for the 2026-27 academic session is now active.</p>
         <p>Secure your child's future with us today.</p>
@@ -123,47 +126,66 @@
         </div>
 </div>
 
-
-    
-<!-- The Vertical Bar (Sidebar) -->
 <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
     <h3 style="color: white; padding-left: 25px;">Menu</h3>
-    <a href="#">School History</a>
-    <a href="#">Our Vision</a>
-    <a href="#">Faculty Members</a>
-    <a href="#">Contact Details</a>
+    <a href="javascript:void(0)" onclick="showSection('home-section')">Home</a>
+    <a href="javascript:void(0)" onclick="showSection('history-section')">School History</a>
+    <a href="javascript:void(0)" onclick="showSection('vision-section')">Our Vision</a>
+  
+    <a href="javascript:void(0)" onclick="showSection('contact-section')">Contact Details</a>
 </div>
 
  <h1>Pine Woods English School</h1>
     <main class="container">
-        <center><img src="https://yt3.googleusercontent.com/3dPy941nOtApmvEjfJ6QnIfEo0Z0hI2Kwv4sA95boJfWz7AHubqUsup3vR1KCYIE9aUNVAy_Mw=s160-c-k-c0x00ffffff-no-rj" ></center>
-        <section>
-            <h2>Student Login Features</h2>
-            <ul>
-                <li>Check marks online instantly</li>
-                <li>Track daily attendance</li>
-                <li>Stay updated with school events</li>
-            </ul>
-        </section>
+        
+        <div id="home-section" class="content-section">
+            <center><img src="https://yt3.googleusercontent.com/3dPy941nOtApmvEjfJ6QnIfEo0Z0hI2Kwv4sA95boJfWz7AHubqUsup3vR1KCYIE9aUNVAy_Mw=s160-c-k-c0x00ffffff-no-rj" ></center>
+            <section>
+                <h2>Student Login Features</h2>
+                <ul>
+                    <li>Check marks online instantly</li>
+                    <li>Track daily attendance</li>
+                    <li>Stay updated with school events</li>
+                </ul>
+            </section>
 
-        <section class="image-section">
-            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqMEEHE3xE3RIy5mX24fU8D30INEXzCL9VlXp9mh9p8D7XOs4NjnnPBa3JLgEAVDHMPiC4VPH1ex6xo3qk5IfUPrAz5K9cJmKqNFR0KF5dlnUzlyMEI0UJPzL7fcZ5s8Q=s1484-w784-h1484-rw" 
-                 alt="School Campus" 
-                 class="sliding-image">
-        </section>
+            <section class="image-section">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqMEEHE3xE3RIy5mX24fU8D30INEXzCL9VlXp9mh9p8D7XOs4NjnnPBa3JLgEAVDHMPiC4VPH1ex6xo3qk5IfUPrAz5K9cJmKqNFR0KF5dlnUzlyMEI0UJPzL7fcZ5s8Q=s1484-w784-h1484-rw" 
+                     alt="School Campus" 
+                     class="sliding-image">
+            </section>
 
-        <section>
-            <h2>Why Choose Our School?</h2>
-            <ul>
-                <li>Fair treatment for every child</li>
-                <li>Built on a foundation of trust</li>
-                <li>Dedicated teachers providing world-class education</li>
-            </ul>
-        </section>
+            <section>
+                <h2>Why Choose Our School?</h2>
+                <ul>
+                    <li>Fair treatment for every child</li>
+                    <li>Built on a foundation of trust</li>
+                    <li>Dedicated teachers providing world-class education</li>
+                </ul>
+            </section>
 
-        <div class="footer-note">
-            <p><strong>Note:</strong> All students can access their academic records through our dedicated mobile app.</p>
+            <div class="footer-note">
+                <p><strong>Note:</strong> All students can access their academic records through our dedicated mobile app.</p>
+            </div>
+        </div>
+
+        <div id="history-section" class="content-section">
+            <h2>School History</h2>
+            <p>Pine Woods English School was founded with a mission to provide excellent education.</p>
+        </div>
+
+        <div id="vision-section" class="content-section">
+            <h2>Our Vision</h2>
+            <p>To nurture bright minds and build a foundation of trust, excellence, and integrity for the future generations.</p>
+        </div>
+
+        
+
+        <div id="contact-section" class="content-section">
+            <h2>Additional Contact Information</h2>
+            <p>Reach out to our administrative office for any specific inquiries regarding admissions, syllabus, or general information.</p>
+            <p>Email: info@pinewoods.edu</p>
         </div>
         
 <footer class="contact-box">
@@ -197,6 +219,21 @@ function toggleSidebar() {
     } else {
         sidebar.style.width = "250px";
     }
+}
+
+
+function showSection(sectionId) {
+    // 1. Get all sections and hide them
+    var sections = document.getElementsByClassName("content-section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    
+    // 2. Show the specific section that was clicked
+    document.getElementById(sectionId).style.display = "block";
+    
+    // 3. Automatically close the sidebar after clicking a link
+    toggleSidebar();
 }
 </script>
     
