@@ -309,3 +309,19 @@ h1 {
     font-size: 0.8rem;
     opacity: 0.8;
 }
+.popup-overlay {
+    display: flex; 
+    position: fixed;
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    align-items: center;     /* Vertically centers the content */
+    justify-content: center; /* Horizontally centers the content */
+    padding: 20px;           /* Prevents content from touching edges on small phones */
+}
+
+
+    
