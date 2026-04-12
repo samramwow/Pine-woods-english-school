@@ -231,7 +231,14 @@
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
+<div id="admissionPopup" class="popup-overlay"> <div class="popup-content"> <span class="close-popup" onclick="closePopup()">&times;</span>
+        <h2>🎓 Admissions Open!</h2>
+        <p>Enrollment for the 2026-27 academic session is now active.</p> <p>Secure your child's future with us today.</p> <div class="credits">
+        <p>*Details regarding admission are available in the Pine Woods app</p></div> </div></div><main class="container"> 
+       
+        
+        
+        
         /* Events */
         .events-grid {
             display: grid;
@@ -370,6 +377,7 @@
 </head>
 <body>
 
+    
     <nav class="navbar">
         <ul>
             <li><span class="navbar-brand" onclick="showSection('home-section')">🏫 Pine Woods Portal</span></li>
@@ -380,14 +388,7 @@
         </ul>
     </nav>
 
-<!-- Admissions Pop-up -->
-    <div id="admissionPopup" class="popup-overlay">
-        <div class="popup-content">
-            <span class="close-popup" onclick="closePopup()">&times;</span>
-            <h2>🎓 Admissions Open!</h2>
-            <p>Enrollment for 2026-27 is now active. Check the Pine Woods app for details.</p>
-        </div>
-    </div>
+
     
     <div class="notice-bar">
         <div class="notice-content">
