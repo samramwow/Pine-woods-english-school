@@ -198,3 +198,46 @@ h1 {
     padding: 10px 15px;
     margin-left: 10px;
 }
+
+
+ .testimonials {
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.testimonial-card {
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    font-style: italic;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: #3498db;
+}
+
+.testimonial-card p {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.author {
+    display: block;
+    font-weight: bold;
+    color: #2c3e50;
+    font-style: normal;
+    font-size: 0.85rem;
+}
