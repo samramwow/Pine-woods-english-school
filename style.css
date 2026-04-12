@@ -190,3 +190,11 @@ h1 {
 .apply-btn:hover {
     background-color: #cc0000;
 }
+
+.download {
+    background-color: #ffda03; 
+    color: #2c3e50;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-left: 10px;
+}
