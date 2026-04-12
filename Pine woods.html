@@ -1,167 +1,464 @@
-<!DOCTYPE html>
-<html lang="en">
+!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Portal | Home</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        /* CSS Variables for Easy Theming */
+        :root {
+            --primary-bg: #f4f6f9;
+            --navbar-bg: #2c3e50;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --card-bg: #ffffff;
+            --accent-blue: #3498db;
+            --accent-yellow: #ffda03;
+            --accent-red: #e74c3c;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-bg: #121212;
+            --navbar-bg: #1a252f;
+            --text-main: #f4f6f9;
+            --text-muted: #aaaaaa;
+            --card-bg: #1e1e1e;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
             line-height: 1.6;
-            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: var(--transition);
         }
 
+        /* Navbar (Sticky) */
         .navbar {
             width: 100%;
-            background: #2c3e50;
-            color: white;
+            background: var(--navbar-bg);
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
+        
         .navbar ul {
             display: flex;
             justify-content: space-around;
             align-items: center;
             list-style: none;
-            margin: 0;
-            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .navbar a {
+
+        .navbar a, .navbar-brand {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: var(--transition);
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 5px;
         }
-        .navbar a:hover { color: #3498db; }
 
+        .navbar a:hover { 
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: var(--accent-blue);
+        }
+
+        .navbar-brand {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .download-btn {
+            background-color: var(--accent-yellow) !important;
+            color: #2c3e50 !important;
+            border-radius: 20px !important;
+            padding: 8px 20px !important;
+            box-shadow: 0 4px 10px rgba(255, 218, 3, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            background-color: #f1c40f !important;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .theme-toggle:hover { transform: rotate(20deg); }
+
+        /* Main Container */
         .container {
-            background: #ffffff;
-            padding: 40px;
-            margin: 40px 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            max-width: 800px;
             width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* Typography */
+        h1 {
+            margin-top: 40px;
+            color: var(--text-main);
+            font-size: 2.5rem;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         h2 {
-            color: #2c3e50;
-            border-left: 5px solid #3498db;
+            color: var(--text-main);
+            border-left: 5px solid var(--accent-blue);
             padding-left: 15px;
             margin-top: 30px;
+            margin-bottom: 15px;
         }
 
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-
-        @keyframes slideIn {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .image-section {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .sliding-image {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            animation: slideIn 1.5s ease-out; 
-        }
-
-        .footer-note {
-            background-color: #e8f4f8;
-            border-radius: 8px;
-            padding: 20px;
-            border-left: 4px solid #3498db;
-            margin-top: 30px;
-        }
-
-        .credits {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #fdf2b2;
-            border-radius: 8px;
-            font-size: 0.9em;
-            text-align: center;
-        }
-        .credits a { color: #d4af37; font-weight: bold; }
-        
-        
+        /* Sections & Animations */
         .content-section {
             display: none;
-            animation: slideIn 0.5s ease-out;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease-out;
+            margin-bottom: 40px;
         }
-        #home-section {
-            display: block; 
+
+        #home-section { display: block; }
+
+        @keyframes fadeIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
+
+        /* Images */
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .sliding-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s ease;
+        }
+        .sliding-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Lists */
+        ul.custom-list { padding-left: 20px; }
+        ul.custom-list li { margin-bottom: 10px; color: var(--text-muted); font-size: 1.05rem; }
+
+        /* Footer Note */
+        .footer-note {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--accent-blue);
+            margin-top: 30px;
+            color: var(--text-main);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+        }
+        .sidebar h3 { color: white; padding-left: 30px; margin-bottom: 20px; font-size: 1.5rem; }
+        .sidebar a {
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #ecf0f1;
+            display: block;
+            transition: 0.3s;
+            border-left: 4px solid transparent;
+        }
+        .sidebar a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--accent-yellow);
+            border-left: 4px solid var(--accent-yellow);
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            border: none;
+            padding: 0;
+        }
+
+        /* Popup */
+        .popup-overlay {
+            display: flex;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-content {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-top: 5px solid var(--accent-blue);
+        }
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+        .close-popup:hover { color: var(--accent-red); }
+
+        /* Faculty Section */
+        .faculty-section {
+            margin-top: 50px;
+            width: 100%;
+        }
+        .faculty-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .faculty-card {
+            background: var(--card-bg);
+            max-width: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--navbar-bg);
+            transition: transform 0.3s;
+        }
+        .faculty-card:hover { transform: translateY(-5px); }
+        .faculty-quote {
+            padding: 30px;
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            position: relative;
+        }
+        .faculty-quote::before {
+            content: "“";
+            font-size: 5rem;
+            color: rgba(52, 152, 219, 0.1);
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            line-height: 1;
+        }
+        .faculty-info {
+            background: var(--navbar-bg);
+            color: white;
+            padding: 15px 25px;
+            margin-top: auto;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-blue);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover { transform: translateY(-5px); }
+        .testimonial-card p { color: var(--text-muted); margin-bottom: 15px; font-style: italic; }
+        .author { font-weight: bold; color: var(--text-main); font-size: 0.9rem; }
+
+        /* Accordion FAQ */
+        details {
+            background: rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            transition: var(--transition);
+        }
+        [data-theme="dark"] details {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-main);
+            outline: none;
+            font-size: 1.1rem;
+        }
+        details p {
+            margin-top: 15px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        /* Footer Boxes */
+        .contact-box {
+            background-color: var(--navbar-bg);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            width: 100%;
+        }
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .contact-item { flex: 1; min-width: 200px; }
+        .contact-item .icon { font-size: 2.5rem; margin-bottom: 15px; display: inline-block;}
+        .contact-item a { color: var(--accent-yellow); text-decoration: none; font-weight: bold;}
+        .contact-item a:hover { text-decoration: underline; }
+        
+        .credits-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(253, 242, 178, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-muted);
+            width: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .credits-box strong { color: var(--text-main); }
+        .credits-box a { color: var(--accent-blue); font-weight: bold; text-decoration: none; }
+
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-    <ul>
-        <li><strong>School Portal</strong></li>
-        <li><a href="javascript:void(0)" onclick="toggleSidebar()">About Us</a></li>
-       <div class="download">  <li>
-    <a href="pinewoods.apk" download="PineWoodsApp">Download</a>
-</li></div>
+        <ul>
+            <li><span class="navbar-brand">🏫 School Portal</span></li>
+            <li><a onclick="showSection('faq-section')">About Us</a></li>
+            <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button></li>
+            <li><a href="pinewoods.apk" download="PineWoodsApp" class="download-btn">Download App</a></li>
+            <li><a onclick="toggleSidebar()" style="font-size: 1.2rem;">☰ Menu</a></li>
+        </ul>
+    </nav>
 
-    </ul>
-</nav>
-
-<div id="admissionPopup" class="popup-overlay">
-    <div class="popup-content">
-        <span class="close-popup" onclick="closePopup()">×</span>
-        <h2>🎓 Admissions Open!</h2>
-      <p>Enrollment for the 2026-27 academic session is now active.</p>
-        <p>Secure your child's future with us today.</p>
-        <div class="credits"><p>*Details regarding admission are available in the Pine Woods app</p></div> 
+    <div id="admissionPopup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">×</span>
+            <h2 style="border: none; margin-top: 0;">🎓 Admissions Open!</h2>
+            <p style="color: var(--text-muted); margin-bottom: 10px;">Enrollment for the 2026-27 academic session is now active.</p>
+            <p style="color: var(--text-main); font-weight: bold;">Secure your child's future with us today.</p>
+            <div style="margin-top: 20px; padding: 15px; background: rgba(255, 218, 3, 0.2); border-radius: 8px; font-size: 0.9em; color: var(--text-main);">
+                <p>*Details regarding admission are available in the Pine Woods app</p>
+            </div> 
         </div>
-</div>
+    </div>
 
-<div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
-    <h3 style="color: white; padding-left: 25px;">Menu</h3>
-    <a href="javascript:void(0)" onclick="showSection('home-section')">Home</a>
-    <a href="javascript:void(0)" onclick="showSection('history-section')">School History</a>
-    <a href="javascript:void(0)" onclick="showSection('vision-section')">Our Vision</a>
-  
-    <a href="javascript:void(0)" onclick="showSection('contact-section')">Contact Details</a>
-</div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
+        <h3>Navigation Menu</h3>
+        <a onclick="showSection('home-section')">🏠 Home</a>
+        <a onclick="showSection('faq-section')">ℹ️ About Us & FAQ</a>
+        <a onclick="showSection('history-section')">🏛️ School History</a>
+        <a onclick="showSection('vision-section')">👁️ Our Vision</a>
+        <a onclick="showSection('contact-section')">📞 Contact Details</a>
+    </div>
 
- <h1>Pine Woods English School</h1>
+    <h1>Pine Woods English School</h1>
+    
     <main class="container">
         
         <div id="home-section" class="content-section">
-            <center><img src="https://yt3.googleusercontent.com/3dPy941nOtApmvEjfJ6QnIfEo0Z0hI2Kwv4sA95boJfWz7AHubqUsup3vR1KCYIE9aUNVAy_Mw=s160-c-k-c0x00ffffff-no-rj" ></center>
+            <div class="image-container">
+                <img src="https://yt3.googleusercontent.com/3dPy941nOtApmvEjfJ6QnIfEo0Z0hI2Kwv4sA95boJfWz7AHubqUsup3vR1KCYIE9aUNVAy_Mw=s160-c-k-c0x00ffffff-no-rj" alt="School Logo/Profile">
+            </div>
+            
             <section>
                 <h2>Objectives of PWES</h2>
-                <ul>
+                <ul class="custom-list">
                     <li>To cater to all sections of the Society</li>
                     <li>To impart quality education</li>
-                    <li> To contribute to all round development of the children and make them useful citizens of tomorrow </li>
+                    <li>To contribute to all round development of the children and make them useful citizens of tomorrow</li>
                 </ul>
             </section>
 
-            <section class="image-section">
-                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqMEEHE3xE3RIy5mX24fU8D30INEXzCL9VlXp9mh9p8D7XOs4NjnnPBa3JLgEAVDHMPiC4VPH1ex6xo3qk5IfUPrAz5K9cJmKqNFR0KF5dlnUzlyMEI0UJPzL7fcZ5s8Q=s1484-w784-h1484-rw" 
-                     alt="School Campus" 
-                     class="sliding-image">
+            <section class="image-container">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqMEEHE3xE3RIy5mX24fU8D30INEXzCL9VlXp9mh9p8D7XOs4NjnnPBa3JLgEAVDHMPiC4VPH1ex6xo3qk5IfUPrAz5K9cJmKqNFR0KF5dlnUzlyMEI0UJPzL7fcZ5s8Q=s1484-w784-h1484-rw" alt="School Campus" class="sliding-image">
             </section>
 
             <section>
                 <h2>Why Choose Our School?</h2>
-                <ul>
+                <ul class="custom-list">
                     <li>Fair treatment for every child</li>
                     <li>Built on a foundation of trust</li>
                     <li>Dedicated teachers providing world-class education</li>
@@ -173,139 +470,176 @@
             </div>
         </div>
 
+        <div id="faq-section" class="content-section">
+            <h2>About Us</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Welcome to Pine Woods English School. We are dedicated to building a strong community of learners, educators, and parents. Below are some frequently asked questions about our institution.</p>
+            
+            <h2>Frequently Asked Questions</h2>
+            
+            <details>
+                <summary>What are the school timings?</summary>
+                <p>Our regular academic hours are from 8:00 AM to 2:30 PM, Monday through Friday. Extracurricular activities usually take place between 2:30 PM and 4:00 PM.</p>
+            </details>
+
+            <details>
+                <summary>Do you provide transportation facilities?</summary>
+                <p>Yes, we operate a fleet of safe and secure buses that cover major routes across the city. Bus tracking is also available via the Pine Woods App.</p>
+            </details>
+
+            <details>
+                <summary>What extracurricular activities are offered?</summary>
+                <p>We believe in all-round development. Students can participate in sports (basketball, cricket, athletics), arts and crafts, coding clubs, and debate societies.</p>
+            </details>
+
+            <details>
+                <summary>How can parents track student progress?</summary>
+                <p>Parents can download the Pine Woods App from the portal. It provides real-time updates on attendance, exam grades, assignments, and direct communication with teachers.</p>
+            </details>
+        </div>
+
         <div id="history-section" class="content-section">
             <h2>School History</h2>
-            <p>Pine Woods English School was founded with a mission to provide excellent education.</p>
+            <p style="color: var(--text-muted);">Pine Woods English School was founded with a mission to provide excellent education.</p>
         </div>
 
         <div id="vision-section" class="content-section">
             <h2>Our Vision</h2>
-            <p>To nurture bright minds and build a foundation of trust, excellence, and integrity for the future generations.</p>
+            <p style="color: var(--text-muted);">To nurture bright minds and build a foundation of trust, excellence, and integrity for the future generations.</p>
         </div>
-
-        
 
         <div id="contact-section" class="content-section">
             <h2>Additional Contact Information</h2>
-            <p>Reach out to our administrative office for any specific inquiries regarding admissions, syllabus, or general information.</p>
-            <p>Email: info@pinewoods.edu</p>
+            <p style="color: var(--text-muted);">Reach out to our administrative office for any specific inquiries regarding admissions, syllabus, or general information.</p>
+            <p style="color: var(--text-main); font-weight: bold; margin-top: 15px;">Email: <a href="mailto:info@pinewoods.edu" style="color: var(--accent-blue);">info@pinewoods.edu</a></p>
         </div>
 
-<section class="faculty-section">
-    <h2>Words from our Faculty</h2>
-    <div class="faculty-grid">
-        <!-- Faculty Member 1 -->
-        <div class="faculty-card">
-            <div class="faculty-quote">
-                <p>"Our goal is to ensure every child feels seen and supported. We don't just teach subjects; we mentor future citizens with a focus on discipline and integrity."</p>
+        <section class="faculty-section">
+            <h2 style="text-align: center; border: none;">Words from our Faculty</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <div class="faculty-quote">
+                        <p>Our goal is to ensure every child feels seen and supported. We don't just teach subjects; we mentor future citizens with a focus on discipline and integrity.</p>
+                    </div>
+                    <div class="faculty-info">
+                        <strong>— Senior Coordinator</strong>
+                        <p>15+ Years at Pine Woods</p>
+                    </div>
+                </div>
+
+                <div class="faculty-card">
+                    <div class="faculty-quote">
+                        <p>At Pine Woods, we blend traditional values with modern learning. Seeing our students grow from curious primary learners to confident graduates is our greatest reward.</p>
+                    </div>
+                    <div class="faculty-info">
+                        <strong>— Department Head</strong>
+                        <p>Dedicated Educator</p>
+                    </div>
+                </div>
             </div>
-            <div class="faculty-info">
-                <strong>— Senior Coordinator</strong>
-                <p>15+ Years at Pine Woods</p>
+        </section>
+
+        <section class="faculty-section" style="background: transparent;">
+            <h2 style="text-align: center; border: none;">What Our Community Says</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Best school in the city. I don't think any other school gives this kind of exposure to the children."</p>
+                    <span class="author">— Ranjit, Verified Parent</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"It’s a real good experience for kids in learning activities. The faculty is well-educated and soft-mannered with both kids and parents."</p>
+                    <span class="author">— Shobha, Verified Parent</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Teacher's are so cooperative and creative. Best memories and best thing I have made is joining this school."</p>
+                    <span class="author">— Alumni (Batch of 2024-25)</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Very disciplined school and very good teachers who can teach their students to score more and make them good citizens to our country."</p>
+                    <span class="author">— Review from justdial</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I have never seen any school like this in my life. The children learn so many real life skills"</p>
+                    <span class="author">— Alumni (Batch of 2025-26)</span>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Faculty Member 2 -->
-        <div class="faculty-card">
-            <div class="faculty-quote">
-                <p>"At Pine Woods, we blend traditional values with modern learning. Seeing our students grow from curious primary learners to confident graduates is our greatest reward."</p>
+        <footer class="contact-box">
+            <h3 style="margin-bottom: 20px; font-size: 1.5rem; letter-spacing: 1px;">Contact Us</h3>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <p><strong>Phone:</strong> <br>+91 676766767</p>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📸</span>
+                    <p><strong>Instagram:</strong> <br><a href="https://www.instagram.com/pinewoodsenglish" target="_blank">Pine woods english school</a></p>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <p><strong>Location:</strong> <br>Hell</p>
+                </div>
             </div>
-            <div class="faculty-info">
-                <strong>— Department Head </strong>
-                <p>Dedicated Educator</p>
-            </div>
-        </div>
-    </div>
-</section>
+        </footer>
 
-        
-   <section class="testimonials">
-    <h2>What Our Community Says</h2>
-    <div class="testimonial-grid">
-        <!-- Quote 1 -->
-        <div class="testimonial-card">
-            <p>"Best school in the city. I don't think any other school gives this kind of exposure to the children."</p>
-            <span class="author">— Ranjit, Verified Parent</span>
-        </div>
-
-        <!-- Quote 2 -->
-        <div class="testimonial-card">
-            <p>"It’s a real good experience for kids in learning activities. The faculty is well-educated and soft-mannered with both kids and parents."</p>
-            <span class="author">— Shobha, Verified Parent</span>
-        </div>
-
-        <!-- Quote 3 -->
-        <div class="testimonial-card">
-            <p>"Teacher's are so cooperative and creative. Best memories and best thing I have made is joining this school."</p>
-            <span class="author">— Alumni (Batch of 2024-25)</span>
-        </div>
-
-        <!-- Quote 4 -->
-        <div class="testimonial-card">
-            <p>"Very disciplined school and very good teachers who can teach their students to score more and make them good citizens to our country."</p>
-            <span class="author">— Review from justdial</span></div>
-        
-        <!--quote5-->
-        <div class="testimonial-card">
-            <p>"I have never seen any school like this in my life. The children learn so many real life skills"</p>
-            <span class="author">— Alumni (Batch of 2025-26)</span>
-        </div>
-    </div>
-</section>
-
-        
-<footer class="contact-box">
-    <h3>Contact Us</h3>
-    <div class="contact-grid">
-        <div class="contact-item">
-            <span class="icon">📞</span>
-            <p><strong>Phone:</strong> +91 676766767</p>
-        </div>
-        <div class="contact-item">
-            <span class="icon">📸</span>
-            <p><strong>Instagram:</strong> <a href="https://www.instagram.com/pinewoodsenglish">Pine woods english school</a></p>
-        </div>
-        <div class="contact-item">
-            <span class="icon">📍</span>
-            <p><strong>Location:</strong> Hell </p>
-        </div>
-    </div>
-</footer>
-<footer class="credits">
-            <p>App Developed by: <strong>Aditya Kumar</strong> | <a href="https://www.instagram.com/idk._.aditya01">Instagram</a></p>
-            <p>Web Developed by: <strong>Sathvik Desai</strong> | <a href="https://www.instagram.com/_sathvik_195">Instagram</a></p>
+        <footer class="credits-box">
+            <p>App Developed by: <strong>Aditya Kumar</strong> | <a href="https://www.instagram.com/idk._.aditya01" target="_blank">Instagram</a></p>
+            <p>Web Developed by: <strong>Sathvik Desai</strong> | <a href="https://www.instagram.com/_sathvik_195" target="_blank">Instagram</a></p>
         </footer>
    
     </main>
+
 <script>
-function toggleSidebar() {
-    var sidebar = document.getElementById("mySidebar");
-    if (sidebar.style.width === "250px") {
-        sidebar.style.width = "0";
-    } else {
-        sidebar.style.width = "250px";
+    // Sidebar logic
+    function toggleSidebar() {
+        var sidebar = document.getElementById("mySidebar");
+        if (sidebar.style.width === "280px") {
+            sidebar.style.width = "0";
+        } else {
+            sidebar.style.width = "280px";
+        }
     }
-}
 
+    // Section routing logic
+    function showSection(sectionId) {
+        // Hide all
+        var sections = document.getElementsByClassName("content-section");
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].style.display = "none";
+        }
+        
+        // Show specific
+        document.getElementById(sectionId).style.display = "block";
+        
+        // Scroll to top of container smoothly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
-function showSection(sectionId) {
-    // 1. Get all sections and hide them
-    var sections = document.getElementsByClassName("content-section");
-    for (var i = 0; i < sections.length; i++) {
-        sections[i].style.display = "none";
+        // Close sidebar if it's open
+        var sidebar = document.getElementById("mySidebar");
+        if (sidebar.style.width === "280px") {
+            toggleSidebar();
+        }
     }
-    
-    // 2. Show the specific section that was clicked
-    document.getElementById(sectionId).style.display = "block";
-    
-    // 3. Automatically close the sidebar after clicking a link
-    toggleSidebar();
-}
-</script>
-    
-    <script>function closePopup() {
-    document.getElementById("admissionPopup").style.display = "none";
-}
+
+    // Popup logic
+    function closePopup() {
+        document.getElementById("admissionPopup").style.display = "none";
+    }
+
+    // New Feature: Dark Mode Toggle
+    function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const toggleBtn = document.querySelector('.theme-toggle');
+        
+        if (currentTheme === 'light') {
+            html.setAttribute('data-theme', 'dark');
+            toggleBtn.textContent = '☀️';
+        } else {
+            html.setAttribute('data-theme', 'light');
+            toggleBtn.textContent = '🌙';
+        }
+    }
 </script>
 </body>
 </html>
